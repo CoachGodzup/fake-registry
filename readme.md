@@ -1,35 +1,35 @@
 # Mock Server Prospect
 
-Server per la creazione di anagrafiche prospect casuali, compliant con il Gdpr.
+This server generates random registry with italian names, for GDPR prospect purpouse
 
-# Caratteristiche
+# Features
 
-- generazione delle anagrafiche prospect
-  - persona fisica o giuridica
-  - stato prospect (i.e., lead, cold, warm, dormant).
-  - anagrafica base (nome, cognome, indirizzo, provincia di residenza, sesso - non obbligatorio)
-  - contatti GDPR (indirizzo, telefono, email)
-  - consensi per la Privacy (investimento, ricerca, promozione)
-  - ultima modifica - ultimo cambiamento stato
-- Genera nomi e cognomi plausibili, sia semplici che multipli o composti, in maniera probabilistica.
-- I dati generati sono compatibili con gli stati prospect, il sesso ed il tipo di persona generati
+- generates new registry prospect
+  - name, surname, address, province, sex - not mandatory
+  - phisical person or company (persona giuridica)
+  - GDPR contacts (address, phone, email)
+  - several Privacy consents
+  - last update, last state update
+  - cold and warm prospect
+- Generates italian fancy names, simple or composite
+- data are compliant with prospect state
 
-# Installazione
+# Installation
 
-## Requisiti
+## Requirements
 
-installare _Node_ v6 o maggiore.
+_Node_ v6 or great.
 
-## Procedura
+## How to
 
-Scaricare le dipendenze
+Download and install dependencies
 
-`npm i`
+`npm i` or `yarn install`
 
-Avviare l'applicazione
+Start the application
 
-`npm start`
+`npm start` or `yarn start`
 
-Provare la nuova API chiamando la url (via browser o Postman)
+Try to call the new API via browser or postman
 
-`http://localhost:3000/anag/prospect/{idCasuale}`
+`http://localhost:3000/prospect/:randomId`
