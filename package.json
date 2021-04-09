@@ -1,0 +1,17 @@
+{
+  "name": "fake-registry",
+  "version": "1.0.0",
+  "description": "Simple mock server that generates random registry with italian names",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "matteo.garza@outlook.it",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {}
+}
