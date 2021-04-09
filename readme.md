@@ -1,6 +1,6 @@
-# Mock Server Prospect
+# Fake Registry
 
-This server generates random registry with italian names, for GDPR prospect purpouse
+This server generates random registry with italian names, with GDPR Prospect purpouse in mind.
 
 # Features
 
