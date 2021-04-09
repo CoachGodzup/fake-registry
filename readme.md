@@ -11,7 +11,7 @@ This server generates random registry with italian names, for GDPR prospect purp
   - several Privacy consents
   - last update, last state update
   - cold and warm prospect
-- Generates italian fancy names, simple or composite
+- generates italian fancy names, simple or composite
 - data are compliant with prospect state
 
 # Installation
