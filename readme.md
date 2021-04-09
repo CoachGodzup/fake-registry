@@ -18,9 +18,9 @@ This server generates random registry with italian names, with GDPR Prospect pur
 
 ## Requirements
 
-_Node_ v6 or great.
+_Node_ v6 or greater.
 
-## How to
+## Getting started
 
 Download and install dependencies
 
@@ -30,6 +30,6 @@ Start the application
 
 `npm start` or `yarn start`
 
-Try to call the new API via browser or postman
+Try to call the new API via browser or Postman
 
 `http://localhost:3000/prospect/:randomId`
