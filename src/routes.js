@@ -1,7 +1,7 @@
 const prospect = require("./prospect/prospect");
 const {
-  ID_PROSPECT_STATO_PF,
-  ID_PROSPECT_STATO_PG,
+  ID_PROSPECT_STATE_PP,
+  ID_PROSPECT_STATE_COMPANY,
   PROSPECT_TYPE,
 } = require("./constants");
 
@@ -9,8 +9,8 @@ const appRouter = (app) => {
   app
     .get("/static", (_, res) => {
       res.json({
-        idProspectStato: ID_PROSPECT_STATO_PF.concat(ID_PROSPECT_STATO_PG),
-        prospectTipo: PROSPECT_TYPE,
+        idProspectState: ID_PROSPECT_STATE_PP.concat(ID_PROSPECT_STATE_COMPANY),
+        prospectType: PROSPECT_TYPE,
       });
     })
     .on("error", (err) => {

@@ -1,21 +1,25 @@
 module.exports = {
   UNBALANCED_TRESHOLD: 0.85,
   BIAS_TO_ROUND_DATE_NEAR_TODAY: 7 * 10 ** 11,
-  // DATE_FORMATTER: new Intl.DateTimeFormat('it-IT', {day: 'numeric', month:'long'}),
 
-  ID_PROSPECT_STATO_PF: [
-    { id: 0, nome: "PROS_COLD" }, // prospect cold: ottenuto tramite cross-selling. Non ha dato consensi espliciti alla privacy
-    { id: 1, nome: "PROS_WARM" }, // prospect che ha dato consenso attivo. Non un cliente, non ha fatto contratti
+  // GDPR is only valid for Phisical Persons, not for Companies
+  ID_PROSPECT_STATE_PP: [
+    { id: 0, name: "COLD" }, // cold prospect: gained via cross-selling. No explicit consent given
+    { id: 1, name: "WARM" }, // warm prospect: who gave explicit consent.
   ],
-  ID_PROSPECT_STATO_PG: [{ id: 2, nome: "PROS_PERSONA_GIURIDICA" }],
+  ID_PROSPECT_STATE_COMPANY: [{ id: 2, name: "COMPANY" }],
 
-  PERSONA_FISICA_ID: 0,
-  PERSONA_GIURIDICA_ID: 1,
+  PHYSICAL_PERSON_ID: 0,
+  COMPANY_ID: 1,
   MALE: "M",
   FEMALE: "F",
   PROSPECT_TYPE: [
-    { idLabel: 0, codice: "PF", descrizione: "Persona Fisica" },
-    { idLabel: 1, codice: "PG", descrizione: "Persona Giuridica" },
+    { idLabel: 0, code: "PP", description: "Phisical Person" },
+    {
+      idLabel: 1,
+      code: "CO",
+      description: "Company",
+    },
   ],
 
   PREFIXES: ["Pier", "Gian", "Carl", "Paol"],

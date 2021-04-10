@@ -11,7 +11,7 @@ const utils = () => {
    */
   const randomizeElementFromArray = (array = []) => {
     if (array.length === 0) {
-      throw new Error("Array non definito");
+      throw new Error("Empty Array given");
     }
     const index = Math.floor((Math.random() * 1000) % array.length);
     return array[index];

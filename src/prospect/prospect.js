@@ -1,13 +1,13 @@
 let publicMethods = {};
-const anagrafica = require("./anagrafica");
+const registry = require("./registry");
 const privacy = require("./privacy");
-const contatti = require("./contatti");
+const contacts = require("./contacts");
 const {
   PROSPECT_TYPE,
-  PERSONA_FISICA_ID,
-  ID_PROSPECT_STATO_PF,
-  PERSONA_GIURIDICA_ID,
-  ID_PROSPECT_STATO_PG,
+  PHYSICAL_PERSON_ID,
+  ID_PROSPECT_STATE_PP,
+  COMPANY_ID,
+  ID_PROSPECT_STATE_COMPANY,
 } = require("../constants");
 const {
   randomizeFairBoolean,
@@ -15,25 +15,25 @@ const {
 } = require("./../utils");
 
 const prospect = () => {
-  const forgeNewProspect = (req) => {
+  const forgeNewProspect = (_) => {
     const isFemale = randomizeFairBoolean();
     const type = getProspectType().idLabel;
     const prospectType = getProspectState(type);
 
     let output = {
-      idProspect: req.idProspect,
-      ...anagrafica.forge(isFemale, type, prospectType),
+      idProspect: prospectType,
+      ...registry.forge(isFemale, type, prospectType),
       ...privacy.forge(prospectType),
-      ...contatti.forge(prospectType),
+      ...contacts.forge(prospectType),
     };
 
     console.log(
       "Forged new prospect: " +
-        output.idProspect +
+        output.idProspect.name +
         " - " +
-        output.nome +
+        output.name +
         " " +
-        output.cognome
+        output.surname
     );
     return output;
   };
@@ -45,10 +45,10 @@ const prospect = () => {
   const getProspectState = (type) => {
     let prospectStatoArray = [];
     switch (type) {
-      case PERSONA_FISICA_ID:
-        prospectStatoArray = ID_PROSPECT_STATO_PF;
-      case PERSONA_GIURIDICA_ID:
-        prospectStatoArray = ID_PROSPECT_STATO_PG;
+      case PHYSICAL_PERSON_ID:
+        prospectStatoArray = ID_PROSPECT_STATE_PP;
+      case COMPANY_ID:
+        prospectStatoArray = ID_PROSPECT_STATE_COMPANY;
     }
     return randomizeElementFromArray(prospectStatoArray);
   };

@@ -6,16 +6,17 @@ const {
 } = require("./../utils");
 
 const privacy = () => {
-  const forge = (prospectStato) => {
+  const forge = (prospectState) => {
     const isPrivacySelected =
-      isProspectAcceptedPrivacy(prospectStato.id) && randomizeFairBoolean();
+      isProspectAcceptedPrivacy(prospectState.id) && randomizeFairBoolean();
 
     return {
-      consensoGenerico: isPrivacySelected,
-      consensoRicerca: getUnbalanced(isPrivacySelected),
-      consensoPromozione: getUnbalanced(isPrivacySelected),
-      consensoMarketing: getUnbalanced(isPrivacySelected),
-      consensoMarketingTerzi: getUnbalanced(isPrivacySelected),
+      consent: {
+        generic: isPrivacySelected,
+        marketing: getUnbalanced(isPrivacySelected),
+        marketingThirdPart: getUnbalanced(isPrivacySelected),
+        thirdPart: getUnbalanced(isPrivacySelected),
+      },
     };
   };
 
