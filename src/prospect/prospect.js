@@ -15,7 +15,7 @@ const {
 } = require("./../utils");
 
 const prospect = () => {
-  const forgeNewProspect = (_) => {
+  const forgeNewProspect = () => {
     const isFemale = randomizeFairBoolean();
     const type = getProspectType().idLabel;
     const prospectType = getProspectState(type);
@@ -43,14 +43,12 @@ const prospect = () => {
   };
 
   const getProspectState = (type) => {
-    let prospectStatoArray = [];
     switch (type) {
       case PHYSICAL_PERSON_ID:
-        prospectStatoArray = ID_PROSPECT_STATE_PP;
+        return randomizeElementFromArray(ID_PROSPECT_STATE_PP);
       case COMPANY_ID:
-        prospectStatoArray = ID_PROSPECT_STATE_COMPANY;
+        return randomizeElementFromArray(ID_PROSPECT_STATE_COMPANY);
     }
-    return randomizeElementFromArray(prospectStatoArray);
   };
 
   publicMethods = {

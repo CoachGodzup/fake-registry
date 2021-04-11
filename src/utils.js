@@ -3,6 +3,7 @@ const {
   BIAS_TO_ROUND_DATE_NEAR_TODAY,
 } = require("./constants");
 
+let publicMethods = {}
 const utils = () => {
   /**
    * Choose a random element from an array
