@@ -50,18 +50,10 @@ const contacts = () => {
     return output;
   };
 
-  const createNewAddress = () => {
-    let output = randomizeElementFromArray(ADDRESS_STREET_NAMES) + " ";
-    // street can be a town, a name.
-    if (randomizeFairBoolean()) {
-      //town
-      output += registry.getProvince();
-    } else {
-      output += registry.getName() + " " + registry.getSurname();
-    }
-    output += " " + (randomizeNumber(10) % 50);
-    output += " - " + registry.getProvince();
-    return output;
+  const createNewAddress = (town) => {
+    let streetName = randomizeFairBoolean() ? registry.getProvince() : `${registry.getName()} ${registry.getSurname()}`
+    let buildingNumber = (randomizeNumber(10) % 50);
+    return `${randomizeElementFromArray(ADDRESS_STREET_NAMES)} ${streetName} ${buildingNumber} - ${town}`;
   };
 
   const createNewPhone = () => {
