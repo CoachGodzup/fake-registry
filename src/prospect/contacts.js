@@ -51,9 +51,13 @@ const contacts = () => {
   };
 
   const createNewAddress = (town) => {
-    let streetName = randomizeFairBoolean() ? registry.getProvince() : `${registry.getName()} ${registry.getSurname()}`
-    let buildingNumber = (randomizeNumber(10) % 50);
-    return `${randomizeElementFromArray(ADDRESS_STREET_NAMES)} ${streetName} ${buildingNumber} - ${town}`;
+    let streetName = randomizeFairBoolean()
+      ? registry.getProvince()
+      : `${registry.getName()} ${registry.getSurname()}`;
+    let buildingNumber = randomizeNumber(10) % 50;
+    return `${randomizeElementFromArray(
+      ADDRESS_STREET_NAMES
+    )} ${streetName} ${buildingNumber} - ${town}`;
   };
 
   const createNewPhone = () => {
