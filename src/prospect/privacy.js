@@ -1,14 +1,9 @@
-let publicMethods = {};
-const {
-  randomizeFairBoolean,
-  randomizeUnbalancedBoolean,
-  isProspectAcceptedPrivacy,
-} = require("./../utils");
+let publicMethods = {}
+const {randomizeFairBoolean, randomizeUnbalancedBoolean, isProspectAcceptedPrivacy} = require('./../utils')
 
 const privacy = () => {
-  const forge = (prospectState) => {
-    const isPrivacySelected =
-      isProspectAcceptedPrivacy(prospectState.id) && randomizeFairBoolean();
+  const forge = prospectState => {
+    const isPrivacySelected = isProspectAcceptedPrivacy(prospectState.id) && randomizeFairBoolean()
 
     return {
       consent: {
@@ -17,17 +12,17 @@ const privacy = () => {
         marketingThirdPart: getUnbalanced(isPrivacySelected),
         thirdPart: getUnbalanced(isPrivacySelected),
       },
-    };
-  };
+    }
+  }
 
-  const getUnbalanced = (canHavePrivacy) => {
-    return canHavePrivacy ? randomizeUnbalancedBoolean() : false;
-  };
+  const getUnbalanced = canHavePrivacy => {
+    return canHavePrivacy ? randomizeUnbalancedBoolean() : false
+  }
 
   publicMethods = {
     forge: forge,
-  };
-};
+  }
+}
 
-privacy();
-module.exports = publicMethods;
+privacy()
+module.exports = publicMethods

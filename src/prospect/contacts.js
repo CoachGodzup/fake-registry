@@ -1,6 +1,6 @@
-let publicMethods = {};
+let publicMethods = {}
 
-const registry = require("./registry");
+const registry = require('./registry')
 const {
   randomizeFairBoolean,
   randomizeUnbalancedBoolean,
@@ -8,66 +8,60 @@ const {
   randomizeElementFromArray,
   randomizeNumber,
   createNewSyllable,
-} = require("../utils");
+} = require('../utils')
 
-const { EMAIL_PROVIDERS, ADDRESS_STREET_NAMES } = require("../constants");
+const {EMAIL_PROVIDERS, ADDRESS_STREET_NAMES} = require('../constants')
 
 const contacts = () => {
-  const forge = (prospectState) => {
-    const idProspectState = prospectState.id;
-    const isProspectWithGdprContacts = isProspectAcceptedPrivacy(
-      idProspectState
-    );
+  const forge = prospectState => {
+    const idProspectState = prospectState.id
+    const isProspectWithGdprContacts = isProspectAcceptedPrivacy(idProspectState)
     let hasAddress,
       hasEmail,
-      hasPhone = randomizeUnbalancedBoolean();
+      hasPhone = randomizeUnbalancedBoolean()
     if (isProspectWithGdprContacts) {
-      hasAddress = randomizeFairBoolean();
-      hasEmail = !hasAddress ? true : randomizeFairBoolean();
+      hasAddress = randomizeFairBoolean()
+      hasEmail = !hasAddress ? true : randomizeFairBoolean()
     } else {
-      hasAddress = hasEmail = false;
+      hasAddress = hasEmail = false
     }
 
     const output = {
       address: hasAddress ? createNewAddress() : null,
       email: hasEmail ? createNewEmail() : null,
       phone: hasPhone ? createNewPhone() : null,
-    };
-    console.log(JSON.stringify(idProspectState) + " " + JSON.stringify(output));
-    return output;
-  };
+    }
+    console.log(JSON.stringify(idProspectState) + ' ' + JSON.stringify(output))
+    return output
+  }
 
   const createNewEmail = () => {
-    let output = "";
-    const MINIMUM_EMAIL_LENGTH = 4;
+    let output = ''
+    const MINIMUM_EMAIL_LENGTH = 4
     for (let i = 0; i < MINIMUM_EMAIL_LENGTH; i++) {
-      output += createNewSyllable();
+      output += createNewSyllable()
     }
     while (randomizeUnbalancedBoolean()) {
-      output += createNewSyllable();
+      output += createNewSyllable()
     }
-    output += "@" + randomizeElementFromArray(EMAIL_PROVIDERS);
-    return output;
-  };
+    output += '@' + randomizeElementFromArray(EMAIL_PROVIDERS)
+    return output
+  }
 
-  const createNewAddress = (town) => {
-    let streetName = randomizeFairBoolean()
-      ? registry.getProvince()
-      : `${registry.getName()} ${registry.getSurname()}`;
-    let buildingNumber = randomizeNumber(10) % 50;
-    return `${randomizeElementFromArray(
-      ADDRESS_STREET_NAMES
-    )} ${streetName} ${buildingNumber} - ${town}`;
-  };
+  const createNewAddress = town => {
+    let streetName = randomizeFairBoolean() ? registry.getProvince() : `${registry.getName()} ${registry.getSurname()}`
+    let buildingNumber = randomizeNumber(10) % 50
+    return `${randomizeElementFromArray(ADDRESS_STREET_NAMES)} ${streetName} ${buildingNumber} - ${town}`
+  }
 
   const createNewPhone = () => {
-    return "3" + randomizeNumber(9);
-  };
+    return '3' + randomizeNumber(9)
+  }
 
   publicMethods = {
     forge: forge,
-  };
-};
+  }
+}
 
-contacts();
-module.exports = publicMethods;
+contacts()
+module.exports = publicMethods
